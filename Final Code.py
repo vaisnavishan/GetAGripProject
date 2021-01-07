@@ -26,12 +26,11 @@ update_thread = repeating_timer(2, update_sim)
 
 
 
-# Global Variables (Vaisnavi)
+# Global Variables 
 home = [0.4066, 0.0, 0.4824] # Q-arm home location
 pickup = [0.5055, 0.0, 0.0227] # Pickup location for containers
 thres = 0.5 # Set threshold to 0.5
 
-#Emilie found all the small locations & Vaisnavi found all the large bin locations
 # Red: small, large 
 autoclave1 = [[-0.5893, 0.2321, 0.364], [-0.3744, 0.155, 0.3303]]
 # Green: small, large
@@ -41,7 +40,7 @@ autoclave3 = [[-0.0022, 0.6337, 0.3675], [0.0, 0.3993, 0.3095]]
 
 
 
-# The following function identifies the ID of the container according to its size and colour (Emilie)
+# The following function identifies the ID of the container according to its size and colour 
 def get_location(identify):
     if identify == 1:
         location = autoclave1[0] # Small red
@@ -58,7 +57,7 @@ def get_location(identify):
     return location
 
 
-# This function moves the container to the pick up, dropoff and home locations (Vaisnavi)
+# This function moves the container to the pick up, dropoff and home locations 
 # If left and right arm are both above the threshold then the arm will move to desired location
 def move_end_effector(coordinate):
     while True:
@@ -67,7 +66,7 @@ def move_end_effector(coordinate):
             break
 
 
-# This function opens the drawer if the container ID corresponds to a large container (containers 4, 5 and 6) (Emilie)
+# This function opens the drawer if the container ID corresponds to a large container (containers 4, 5 and 6) 
 # If the left arm is above the threshold, the right arm is 0 and the container is large, the corresponding drawer will open
 
 def drawer_open(identify):
@@ -85,7 +84,7 @@ def drawer_open(identify):
             break
             
 
-# This function controls the gripper in terms of opening and closing it to hold and release the container (Vaisnavi)
+# This function controls the gripper in terms of opening and closing it to hold and release the container 
 # If the right arm is greater than the threshold and the left arm is 0, the gripper will fully close
 # If the right arm is between 0 and the threshold and the left arm is 0, the gripper will fully open
 def gripper():
@@ -97,7 +96,7 @@ def gripper():
             arm.control_gripper(-45) # Open gripper fully
             break
                 
-# This function closes the drawer after the container has been placed in it (Emilie)
+# This function closes the drawer after the container has been placed in it 
 # If the left arm is above the threshold, the right arm is 0 and the container is large, the corresponding drawer will close
 def drawer_close(identify):
    while True: 
@@ -113,7 +112,7 @@ def drawer_close(identify):
         elif identify < 4: # Nothing will happen if the container is small
             break
         
-#main function (Vaisnavi & Emilie)
+#main function 
 def main():
     container_ID = [1, 2, 3, 4, 5, 6] # List of all containers
     random.shuffle(container_ID) # Randomizes spawned container
