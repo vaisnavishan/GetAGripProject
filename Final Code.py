@@ -1,17 +1,13 @@
 ## ----------------------------------------------------------------------------------------------------------
 ## Team: Thurs 23
-##Team Member 1: Emilie Alain, macID: alaine1, Student Number:400298084
-##Team Member 2: Vaisnavi Shanthamoorthy, macID: shanthav, Student Number: 400319038
-## TEMPLATE
-## Please DO NOT change the naming convention within this template. Some changes may
-## lead to your program not functioning as intended.
 import random
 import sys
 sys.path.append('../')
 
 from Common_Libraries.p2_lib import *
 
-import os
+import os
+
 from Common_Libraries.repeating_timer_lib import repeating_timer
 
 def update_sim ():
@@ -26,7 +22,8 @@ update_thread = repeating_timer(2, update_sim)
 # (0.5055, 0.0, 0.0227)
 
 ## STUDENT CODE BEGINS
-## ----------------------------------------------------------------------------------------------------------
+## ----------------------------------------------------------------------------------------------------------
+
 
 
 # Global Variables (Vaisnavi)
@@ -121,7 +118,8 @@ def main():
     container_ID = [1, 2, 3, 4, 5, 6] # List of all containers
     random.shuffle(container_ID) # Randomizes spawned container
     for identify in container_ID:
-        arm.spawn_cage(identify) # Correct container will spawn
+        arm.spawn_cage(identify) # Correct container will spawn
+
         dropoff = get_location(identify) # Gets coordinates for drop off location
         move_end_effector(pickup) # Arm moves to container's pickup location
         gripper() # Closes gripper
